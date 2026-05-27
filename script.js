@@ -1170,3 +1170,33 @@ document.addEventListener("DOMContentLoaded", () => {
     panel.classList.add("collapsed");
   }
 });
+
+
+/* V8.3.2 Mobile message icon only on home page */
+document.addEventListener("DOMContentLoaded", () => {
+  const isMobile = window.matchMedia("(max-width: 860px)").matches;
+  const page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  const isHome = page === "home.html" || page === "" || location.pathname.endsWith("/");
+
+  if (isMobile) {
+    const dock = document.querySelector("#messagePanel");
+    if (dock) {
+      dock.classList.add("collapsed");
+      dock.style.display = "none";
+    }
+  }
+
+  if (!isMobile || !isHome) return;
+  if (document.querySelector(".mobile-message-fab")) return;
+
+  const fab = document.createElement("a");
+  fab.className = "mobile-message-fab";
+  fab.href = "messages.html";
+  fab.setAttribute("aria-label", "Open messages");
+  fab.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+    </svg>
+  `;
+  document.body.appendChild(fab);
+});

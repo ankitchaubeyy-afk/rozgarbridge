@@ -1846,3 +1846,128 @@ p,.muted,input,select,textarea,.nav-links a,.btn{
     max-height:235px!important;
   }
 }
+
+
+/* =====================================================
+   V8.3.2 MOBILE MESSAGE ICON HOTFIX
+   Desktop unchanged.
+   Mobile: no message dock panel; only a small icon on home page.
+   ===================================================== */
+
+@media (max-width: 860px){
+
+  #messagePanel,
+  .message-dock,
+  .message-dock.open,
+  .message-dock:not(.collapsed){
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+
+  .mobile-message-fab{
+    position:fixed!important;
+    right:16px!important;
+    bottom:18px!important;
+    width:54px!important;
+    height:54px!important;
+    border-radius:999px!important;
+    background:#00d6a3!important;
+    color:#06111f!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    box-shadow:0 16px 36px rgba(0,214,163,.28)!important;
+    z-index:1100!important;
+    border:0!important;
+    text-decoration:none!important;
+  }
+
+  .mobile-message-fab svg{
+    width:24px!important;
+    height:24px!important;
+    stroke:currentColor!important;
+    stroke-width:2!important;
+    fill:none!important;
+    stroke-linecap:round!important;
+    stroke-linejoin:round!important;
+  }
+
+  .mobile-message-fab:after{
+    content:"";
+    position:absolute;
+    top:8px;
+    right:8px;
+    width:10px;
+    height:10px;
+    border-radius:999px;
+    background:#ff4d6d;
+    border:2px solid #06111f;
+  }
+
+  #messageBubbleBtn{
+    display:none!important;
+  }
+}
+
+@media (min-width: 861px){
+  .mobile-message-fab{
+    display:none!important;
+  }
+}
+
+
+/* =====================================================
+   V8.3.3 Login Page Clean Nav
+   Only login.html affected
+   ===================================================== */
+
+.login-only-nav .nav-inner{
+  justify-content:space-between!important;
+}
+
+.login-help-actions{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.login-help-actions a{
+  color:#cbd5e1;
+  font-size:.95rem;
+  font-weight:650;
+  text-decoration:none;
+}
+
+.login-help-actions a:hover{
+  color:#00d6a3;
+}
+
+@media(max-width:860px){
+  .login-only-nav .nav-inner{
+    height:64px!important;
+  }
+
+  .login-only-nav .brand-logo-img{
+    max-width:178px!important;
+  }
+
+  .login-only-nav .brand-logo-img img{
+    width:170px!important;
+  }
+
+  .login-help-actions{
+    gap:10px!important;
+  }
+
+  .login-help-actions a{
+    font-size:.82rem!important;
+    padding:8px 9px;
+    border-radius:10px;
+    background:rgba(255,255,255,.06);
+  }
+
+  .login-help-actions a:first-child{
+    display:none;
+  }
+}
