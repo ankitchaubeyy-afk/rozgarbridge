@@ -1,0 +1,69 @@
+<!doctype html><html lang='en'><head><title>My Applications | RozgarBridge</title><title>RozgarBridge | Jobs, Freelancers & Investors</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg"><meta property="og:title" content="RozgarBridge"><meta property="og:description" content="Jobs, freelancers and business investment opportunities in one bridge."><meta property="og:image" content="og-image.svg">
+<link rel="stylesheet" href="styles.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script><script defer src="script.js"></script></head><body><div class="loader"><div class="loader-mark">R</div></div>
+<nav class="navbar rb-premium-nav"><div class="container nav-inner">
+<a class="brand-logo-img" href="home.html"><img src="rb-logo.svg" alt="RozgarBridge"></a>
+<button class="mobile-toggle">Menu</button>
+<div class="nav-links"><a data-nav href="home.html">Home</a><a data-nav href="freelancer-dashboard.html">Find Work</a><a data-nav href="index.html">Find Talent</a><a data-nav href="investor-dashboard.html">Investors</a></div>
+<div class="nav-actions">
+<button id="searchBtn" class="icon-btn rb-nav-icon" type="button" title="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<button id="notificationBtn" class="icon-btn rb-nav-icon notify-dot" type="button" title="Notifications"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg></button>
+<button id="messageBubbleBtn" class="icon-btn rb-nav-icon" type="button" title="Messages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path></svg></button>
+<div class="profile-wrap"><button id="profileDropBtn" class="profile-chip" type="button"><span id="navAvatar" class="nav-avatar avatar-fallback">R</span><span id="navName">Me</span><span>⌄</span></button><div id="profileDropdown" class="profile-dropdown">
+  <div class="profile-drop-head"><span id="dropAvatar" class="public-avatar small avatar-fallback">R</span><div><strong id="dropName">My Profile</strong><p id="dropHeadline" class="muted">Complete your profile</p></div></div>
+  <a class="btn btn-secondary full" href="profile.html">View My Profile</a>
+  <div class="drop-list">
+    <a href="saved-jobs.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"></path></svg><span class="menu-text">Saved Jobs</span> <span>12</span></a>
+    <a href="my-applications.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg><span class="menu-text">My Applications</span> <span>24</span></a>
+    <a href="post-job.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span class="menu-text">Post a Job</span></a>
+    <a href="employer-dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"></path><rect x="3" y="6" width="18" height="15" rx="2"></rect><path d="M3 12h18"></path></svg><span class="menu-text">Employer Dashboard</span></a>
+    <a href="company.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v16"></path><path d="M9 7h3M9 11h3M9 15h3M3 21h18"></path></svg><span class="menu-text">Company Page</span></a>
+  </div>
+  <div class="drop-list border-top">
+    <button id="themeToggle" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"></path><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1A2 2 0 1 1 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 0 1 19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg><span class="menu-text">Light / Dark</span></button>
+    <button id="quickPasswordReset" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span class="menu-text">Password Reset</span></button>
+    <a href="privacy-policy.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span class="menu-text">Privacy</span></a>
+    <a href="terms.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"></path><path d="M14 2v6h6M9 13h6M9 17h6"></path></svg><span class="menu-text">Terms</span></a>
+    <a href="admin.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"></path><path d="M9 12l2 2 4-5"></path></svg><span class="menu-text">Admin Base</span></a>
+    <button id="logoutBtn" type="button" class="danger-text"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5"></path><path d="M15 12H3"></path><path d="M21 3v18"></path></svg><span class="menu-text">Logout</span></button>
+  </div>
+</div></div>
+<a id="loginLink" class="btn btn-primary" href="login.html">Login</a></div>
+</div></nav>
+<div id="notificationPanel" class="notification-panel">
+  <div class="panel-head"><strong>Notifications</strong><button id="markReadBtn" type="button">Mark all as read</button></div>
+  <div class="notif-list">
+    <div class="notif-item"><span class="notif-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6V5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v1"></path><rect x="3" y="6" width="18" height="15" rx="2"></rect><path d="M3 12h18"></path></svg></span><div><strong>New application received</strong><p>For 3D Artist role · 2m ago</p></div></div>
+    <div class="notif-item"><span class="notif-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg></span><div><strong>Profile shortlisted</strong><p>UI/UX Designer · 1h ago</p></div></div>
+    <div class="notif-item"><span class="notif-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg></span><div><strong>Job post update</strong><p>15 new applications · 2h ago</p></div></div>
+    <div class="notif-item"><span class="notif-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"></path><path d="M9 12l2 2 4-5"></path></svg></span><div><strong>Profile views increased</strong><p>40% this month · 5h ago</p></div></div>
+  </div>
+  <a href="my-applications.html" class="panel-footer-link">View all notifications →</a>
+</div>
+<div id="messagePanel" class="message-dock">
+  <div class="message-dock-head">
+    <div class="dock-user"><span class="dock-avatar">R</span><strong>Messaging</strong></div>
+    <div class="dock-actions"><button id="openMessagesPage" class="dock-icon" type="button" title="Open full messages">↗</button><button id="closeMessagePanel" class="dock-icon" type="button" title="Collapse">⌄</button></div>
+  </div>
+  <div class="message-dock-body">
+    <div class="dock-search"><span>⌕</span><input id="messageSearch" placeholder="Search messages"></div>
+    <div class="dock-tabs"><button class="active" data-msg-tab="focused">Focused</button><button data-msg-tab="other">Other</button></div>
+    <div class="dock-list" id="dockMessageList">
+      <a class="dock-chat" href="messages.html"><span class="chat-avatar">NB</span><div><strong>Neha Bukke</strong><p>Okay, please share details...</p></div><small>May 25</small></a>
+      <a class="dock-chat" href="messages.html"><span class="chat-avatar">AM</span><div><strong>Ankita Mathur</strong><p>Can we discuss the project?</p></div><small>May 20</small></a>
+      <a class="dock-chat" href="messages.html"><span class="chat-avatar brand">R</span><div><strong>RozgarBridge</strong><p>Your application was submitted.</p></div><small>Today</small></a>
+      <a class="dock-chat" href="messages.html"><span class="chat-avatar">TS</span><div><strong>Tech Solutions</strong><p>We have a job opening for you.</p></div><small>Yesterday</small></a>
+    </div>
+    <a class="dock-footer" href="messages.html">View all messages</a>
+  </div>
+</div><main class="dashboard"><div class="container">
+<div class="dashboard-top"><div><span class="eyebrow">My Applications</span><h2>Track your job applications.</h2><p>See every job you applied for and current status.</p></div><a class="btn btn-primary" href="freelancer-dashboard.html">Find More Work</a></div>
+<div id="myApplications" class="job-grid"></div>
+</div></main>
+<footer class="footer"><div class="container footer-inner"><p>© 2026 RozgarBridge</p><p>Real product MVP · Firebase Auth · Firestore Profiles</p></div></footer><div class="toast"></div></body></html>

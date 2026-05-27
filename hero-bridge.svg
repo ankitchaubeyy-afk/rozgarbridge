@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470">
+<defs>
+<linearGradient id="b" x1="0" x2="1"><stop stop-color="#00D6A3"/><stop offset="1" stop-color="#0E8F78"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="900" height="470" fill="transparent"/>
+<g opacity=".22" stroke="#00D6A3">
+  <path d="M80 80 L210 140 L350 80 L520 150 L750 60"/>
+  <path d="M180 250 L320 190 L500 250 L760 160"/>
+  <circle cx="210" cy="140" r="5" fill="#00D6A3"/><circle cx="350" cy="80" r="5" fill="#00D6A3"/><circle cx="520" cy="150" r="5" fill="#00D6A3"/>
+</g>
+<g filter="url(#glow)" fill="none" stroke="url(#b)" stroke-width="4">
+  <path d="M70 360 C250 310 420 250 830 245"/>
+  <path d="M70 380 C260 330 430 275 830 270"/>
+  <path d="M210 350 C250 195 360 195 400 330"/>
+  <path d="M560 285 C605 80 730 80 775 270"/>
+  <path d="M210 350 V170 M400 330 V170 M560 285 V60 M775 270 V60"/>
+  <path d="M210 175 C260 210 350 210 400 175"/>
+  <path d="M560 65 C620 130 715 130 775 65"/>
+</g>
+<g opacity=".7" stroke="#00D6A3" stroke-width="2">
+  <path d="M230 190 L230 345M255 205 L255 338M280 214 L280 332M305 217 L305 326M330 214 L330 322M355 205 L355 318M380 190 L380 314"/>
+  <path d="M585 90 L585 282M615 115 L615 278M645 128 L645 274M675 132 L675 271M705 128 L705 268M735 115 L735 266M762 90 L762 263"/>
+</g>
+</svg>
